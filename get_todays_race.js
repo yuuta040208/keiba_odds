@@ -1,11 +1,14 @@
 const puppeteer = require('puppeteer');
-const fs = require("fs");
+const fs = require('fs');
 
 (async () => {
 	const browser = await puppeteer.launch({
 		args: [
-			// プロキシの設定
-			'--proxy-server=10.25.195.26:3128'
+			// プロキシの設定（必要に応じてコメントアウト）
+			'--proxy-server=10.25.195.26:3128',
+			// sandboxの設定
+			'--no-sandbox',
+			'--disable-setuid-sandbox'
 		]
 	});
 
@@ -14,18 +17,30 @@ const fs = require("fs");
 	// URLにアクセス
 	await page.goto('https://www.nankankeiba.com/');
 
-
 	// スクレイピング開始
 	const scrapingData = await page.evaluate(() => {
-		const dataList = [];
+		// URLを格納する配列
+		const urlList = [];
 		// 指定したセレクタの要素を抽出
-		const nodeList = document.querySelectorAll('div[id^="race_2"] a.tx_ellipsis');
-		nodeList.forEach(_node => {
+		const url = document.querySelectorAll('div[id^="race_2"] a.tx_ellipsis');
+		url.forEach(_node => {
 			// URLを格納
-			dataList.push(_node.href);
+			urlList.push(_node.href);
 		})
-		console.log(dataList);
-		return dataList;
+		
+		// レース開始時間を格納する配列」
+		const timeList = [];
+		const time = document.querySelectorAll('div[id^="race_2"] div.stime');
+		time.forEach(_node => {
+			timeList.push(_node.textContent)
+		})
+
+		const data = {
+			'url': urlList,
+			'time': timeList
+		};
+
+		return data;
 	});
 
 	// ファイル保存
