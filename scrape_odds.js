@@ -3,6 +3,7 @@
 **********************************/
 var client = require('cheerio-httpcli');
 var fs = require('fs');
+var date = require('date-utils');
 
 /**********************************
 * メイン処理
@@ -19,6 +20,31 @@ var loadFile = function () {
 	});
 };
 
+// レースを選択する
+var selectUrl = function (map) {
+	return new Promise(function (resolve, reject) {
+		var json = [];
+
+		// 既に終了したレースのURLはスクレイピングリストに追加しないよう処理する
+		// 現在時刻を取得
+		var date = new Date();
+		var now_time = Number(date.toFormat('HH24MM'));
+
+		map['time'].forEach(function(elem, idx) {
+			var race_time = Number(elem.replace(':', ''));
+
+			// まだ終了していないレースのURLのみ追加
+			if(race_time > now_time) {
+				json.push(map['url'][idx]);
+			}
+		});
+
+		resolve(json);
+	});
+};
+
+
+// スクレイピングする
 var scrape = function(urls) {
 	return new Promise(function (resolve, reject) {
 		var race = {};
@@ -120,6 +146,9 @@ var main = function () {
 	Promise.resolve()
 		.then(function () {
 			return loadFile();
+		})
+		.then(function (results) {
+			return selectUrl(results);
 		})
 		.then(function (results) {
 			return scrape(results);
