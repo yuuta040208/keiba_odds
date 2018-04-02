@@ -45,20 +45,11 @@ var insertToDB = function (data) {
 			});
 		}
 
-		console.log(data_set);
-
 		// クエリを実行
 		var query = 'INSERT INTO main (race_id, wakuban, umaban, tan_odds, fuku_odds) VALUES ?';
 		connection.query(query, [data_set], (err, rows) => {
 			if(err) throw err;
 		});
-
-		// クエリを実行
-		// connection.query('SELECT * FROM main', (err, rows) => {
-		// 	if(err) throw err;
-
-		// 	console.log(rows);
-		// });
 
 		// DBから切断
 		connection.end((err) => {
@@ -81,9 +72,6 @@ var main = function () {
 		.then(function (results) {
 			return insertToDB(results);
 		})
-		// .then(function (results) {
-		// 	return writeFile(results);
-		// })
 		.then(function (results) {
 			// 完了
 			resolve();
