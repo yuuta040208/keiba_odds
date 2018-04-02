@@ -19,11 +19,12 @@ const fs = require("fs");
 	const scrapingData = await page.evaluate(() => {
 		const dataList = [];
 		// 指定したセレクタの要素を抽出
-		const nodeList = document.querySelectorAll('div#race_2_tck a.tx_ellipsis');
+		const nodeList = document.querySelectorAll('div[id^="race_2"] a.tx_ellipsis');
 		nodeList.forEach(_node => {
 			// URLを格納
 			dataList.push(_node.href);
 		})
+		console.log(dataList);
 		return dataList;
 	});
 
