@@ -68,7 +68,7 @@ var scrape = function(urls) {
 					// 単勝オッズ
 					case 3:
 						// 数字のみ抽出して格納
-						json['tan_odds'] = text.replace(/[^0-9^\.]/g,'');
+						json['tan_odds'] = parseFloat(text.replace(/[^0-9^\.]/g,''));
 						break;
 
 					// 複勝オッズ
@@ -76,7 +76,7 @@ var scrape = function(urls) {
 						// 数字のみ抽出してハイフンで分割
 						text = text.replace(/[^0-9^\.-]/g,'').split("-");
 						// 2で除算したものを格納
-						text = String(((Number(text[0]) + Number(text[1])) / 2).toFixed(1));
+						text = parseFloat(String(((Number(text[0]) + Number(text[1])) / 2).toFixed(1)));
 						json['fuku_odds'] = text;
 
 						// 全てのデータを格納し終わったら、JSONをリストに追加
