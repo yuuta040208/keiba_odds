@@ -34,22 +34,29 @@ var insertToDB = function (data) {
 		// 挿入するデータセットを作成
 		var data_set = [];
 		for (race_id in data) {
-			data[race_id].forEach(function(elem) {
-				var array = [];
-				array.push(race_id);
-				array.push(elem['wakuban']);
-				array.push(elem['umaban']);
-				array.push(elem['tan_odds']);
-				array.push(elem['fuku_odds']);
-				data_set.push(array);
-			});
+			if(data[race_id].length != 0) {
+				data[race_id].forEach(function(elem) {
+					var array = [];
+					array.push(race_id);
+					array.push(elem['wakuban']);
+					array.push(elem['umaban']);
+					array.push(elem['tan_odds']);
+					array.push(elem['fuku_odds']);
+					data_set.push(array);
+				});
+			}
 		}
 
 		// クエリを実行
-		var query = 'INSERT INTO main (race_id, wakuban, umaban, tan_odds, fuku_odds) VALUES ?';
-		connection.query(query, [data_set], (err, rows) => {
-			if(err) throw err;
-		});
+		if (data_set.length != 0) { 
+			var query = 'INSERT INTO main (race_id, wakuban, umaban, tan_odds, fuku_odds) VALUES ?';
+			connection.query(query, [data_set], (err, rows) => {
+				if(err) throw err;
+				console.log('Insert complete.');
+			});
+		} else {
+			console.log('No data.');
+		}
 
 		// DBから切断
 		connection.end((err) => {
