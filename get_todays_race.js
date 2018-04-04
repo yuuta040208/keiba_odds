@@ -28,17 +28,21 @@ const fs = require('fs');
 			urlList.push(_node.href);
 		})
 		
-		// レース開始時間を格納する配列」
+		// レース開始時間を格納する配列
 		const timeList = [];
 		const time = document.querySelectorAll('div[id^="race_2"] div.stime');
 		time.forEach(_node => {
 			timeList.push(_node.textContent)
 		})
 
+		// 返り値とするデータを作成
 		const data = {
 			'url': urlList,
 			'time': timeList
 		};
+
+		// デバッグ用
+		console.log(data);
 
 		return data;
 	});
@@ -46,5 +50,6 @@ const fs = require('fs');
 	// ファイル保存
 	fs.writeFileSync(__dirname + '/racelist.json', JSON.stringify(scrapingData, null, '    '))
 
+	// ヘッドレスブラウザの停止
 	await browser.close();
 })();

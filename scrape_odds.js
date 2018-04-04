@@ -34,7 +34,7 @@ var selectUrl = function (map) {
 			var race_time = Number(elem.replace(':', ''));
 
 			// まだ終了していないレースのURLのみ追加
-			if(race_time > now_time) {
+			if(race_time >= now_time) {
 				json.push(map['url'][idx]);
 			}
 		});
@@ -116,6 +116,8 @@ var scrape = function(urls) {
 
 			// レースIDをキーにして格納
 			race[race_id] = list;
+
+			console.log(url);
 
 			// 全てのレースのスクレイピングが終了したら
 			if(Object.keys(race).length == urls.length) {
