@@ -5,7 +5,7 @@ in:
     password: unkoburiburi
     database: odds
     query: |
-        SELECT * FROM keiba
+        SELECT * FROM main
 
 out:
     type: elasticsearch
