@@ -41,9 +41,6 @@ const fs = require('fs');
 			'time': timeList
 		};
 
-		// デバッグ用
-		console.log(data);
-
 		return data;
 	});
 
