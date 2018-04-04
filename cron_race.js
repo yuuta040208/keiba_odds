@@ -36,6 +36,15 @@ var job = new cronJob({
 
             console.log('pm2 restart cron_odds (' + now + ')');
             console.log('==================================================');
+
+            // visualizationの削除
+            childProcess.execSync('node kibana_vis_delete.js');
+            // visualizationの登録
+            childProcess.execSync('node kibana_vis_post.js');
+            // dashboardの削除
+            childProcess.execSync('node kibana_dash_delete.js');
+            // dashboardの登録
+            childProcess.execSync('node kibana_dash_post.js');
         });
 
         // スクリプトエラー発生時の処理
