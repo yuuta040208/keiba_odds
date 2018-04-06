@@ -2,7 +2,7 @@
 
 ## 使い方
     npm install puppeteer --unsafe-perm=true --allow-root
-    npm install cheerio-httpcli child_process cron date-utils fs time
+    npm install cheerio-httpcli child_process cron date-utils fs mysql
     pm2 start cron_race.js
   
 - cron_race.jsは平日毎朝6時に以下のスクリプトを自動実行する
