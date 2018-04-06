@@ -1,14 +1,30 @@
-[
-    "https://www.nankankeiba.com/race_info/2018033020200501.do",
-    "https://www.nankankeiba.com/race_info/2018033020200502.do",
-    "https://www.nankankeiba.com/race_info/2018033020200503.do",
-    "https://www.nankankeiba.com/race_info/2018033020200504.do",
-    "https://www.nankankeiba.com/race_info/2018033020200505.do",
-    "https://www.nankankeiba.com/race_info/2018033020200506.do",
-    "https://www.nankankeiba.com/race_info/2018033020200507.do",
-    "https://www.nankankeiba.com/race_info/2018033020200508.do",
-    "https://www.nankankeiba.com/race_info/2018033020200509.do",
-    "https://www.nankankeiba.com/race_info/2018033020200510.do",
-    "https://www.nankankeiba.com/race_info/2018033020200511.do",
-    "https://www.nankankeiba.com/race_info/2018033020200512.do"
-]
+{
+    "url": [
+        "https://www.nankankeiba.com/race_info/2018040421010301.do",
+        "https://www.nankankeiba.com/race_info/2018040421010302.do",
+        "https://www.nankankeiba.com/race_info/2018040421010303.do",
+        "https://www.nankankeiba.com/race_info/2018040421010304.do",
+        "https://www.nankankeiba.com/race_info/2018040421010305.do",
+        "https://www.nankankeiba.com/race_info/2018040421010306.do",
+        "https://www.nankankeiba.com/race_info/2018040421010307.do",
+        "https://www.nankankeiba.com/race_info/2018040421010308.do",
+        "https://www.nankankeiba.com/race_info/2018040421010309.do",
+        "https://www.nankankeiba.com/race_info/2018040421010310.do",
+        "https://www.nankankeiba.com/race_info/2018040421010311.do",
+        "https://www.nankankeiba.com/race_info/2018040421010312.do"
+    ],
+    "time": [
+        "15:00",
+        "15:30",
+        "16:00",
+        "16:30",
+        "17:00",
+        "17:30",
+        "18:00",
+        "18:30",
+        "19:05",
+        "19:40",
+        "20:15",
+        "20:50"
+    ]
+}
