@@ -3,7 +3,7 @@ var childProcess = require('child_process');
 require('date-utils');
 
 // cronの設定
-//var cronTime = "0 0 6 * * 1-5";
+var cronTime = "0 0 6 * * 1-5";
 
 // 一度だけ実行したい場合、Dateオブジェクトで指定も可能
 // var cronTime = new Date();
